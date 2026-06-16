@@ -235,9 +235,10 @@ export default function Landing() {
       <li><b>Preconstruction</b> &mdash; budgeting, planning, scheduling</li>
       <li><b>Commissioning</b> &mdash; quality assurance and handover</li>
       <li><b>VDC</b> &mdash; Virtual Design &amp; Construction</li></ul></div>
-      <div className="pillar tilt"><span className="picon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span className="pnum">PILLAR 02</span><h3>Energy &amp; Power</h3><ul>
-      <li><b>Solar</b> &mdash; solar battery system design</li>
-      <li><b>Storage</b> &mdash; lithium-ion deployment for backup power and peak shaving</li></ul></div>
+      <div className="pillar tilt energy"><span className="picon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span className="pnum">PILLAR 02</span><h3>Energy &amp; Power</h3><ul>
+      <li><b>Solar</b> &mdash; on-site solar generation (with solar-tec)</li>
+      <li><b>Storage</b> &mdash; lithium-ion battery systems for backup power and peak shaving (with z1power)</li>
+      <li><b>EV Charging</b> &mdash; smart AC &amp; DC fast charging (with EVBOLT)</li></ul></div>
       <div className="pillar tilt"><span className="picon"><svg viewBox="0 0 24 24"><path d="M9.5 18h5"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.7c.8.7 1.3 1.4 1.3 2.3h5c0-.9.5-1.6 1.3-2.3A6 6 0 0 0 12 3z"/></svg></span><span className="pnum">PILLAR 03</span><h3>Lighting Systems <span className="tag-new">New</span></h3><ul>
       <li><b>LED</b> &mdash; interior, exterior, and architectural fixtures</li>
       <li><b>PoE</b> &mdash; Power-over-Ethernet, network-powered smart lighting</li>
@@ -271,23 +272,23 @@ export default function Landing() {
       <div className="prj-list reveal" id="prjList">
       <div className="prj open"><button className="prj-btn" aria-expanded="true"><span className="prj-code">PRJ.01</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><path d="M2 21h20"/><path d="M5 21V8h6v13"/><path d="M11 21v-7h5v7"/><path d="M7 11h2M7 14.5h2"/></svg></span>New housing cities</span><span className="prj-val">Multi-site</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Hospitals &amp; clinics</span><span className="chip">Schools, retail &amp; community buildings</span><span className="chip">Interior &amp; exterior LED lighting</span><span className="chip">On-site solar &amp; battery power</span><span className="chip">Access control &amp; security</span><span className="chip">Materials &amp; equipment sourcing</span>
+      <span className="chip">Hospitals &amp; clinics</span><span className="chip">Schools, retail &amp; community buildings</span><span className="chip">Interior &amp; exterior LED lighting</span><span className="chip energy">On-site solar &amp; battery power</span><span className="chip energy">EV charging stations</span><span className="chip">Access control &amp; security</span><span className="chip">Materials &amp; equipment sourcing</span>
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.02</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.6a3 3 0 0 1 0 4.8"/><path d="M18.5 20a6 6 0 0 0-3.2-5.3"/></svg></span>Labor city</span><span className="prj-val">Multi-site</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Worker clinics</span><span className="chip">Dining &amp; retail / service buildings</span><span className="chip">Cold storage &amp; food facilities</span><span className="chip">Interior &amp; area lighting</span><span className="chip">Backup power (solar + lithium-ion)</span><span className="chip">Access control &amp; security</span><span className="chip">Full sourcing &amp; delivery</span>
+      <span className="chip">Worker clinics</span><span className="chip">Dining &amp; retail / service buildings</span><span className="chip">Cold storage &amp; food facilities</span><span className="chip">Interior &amp; area lighting</span><span className="chip energy">Backup power (solar + lithium-ion)</span><span className="chip">Access control &amp; security</span><span className="chip">Full sourcing &amp; delivery</span>
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.03</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><path d="M12 2.5c-.8 0-1.3 1-1.3 2.2v3.9L3 13v1.8l7.7-2.2v4l-2 1.4V21l3.3-.9 3.3.9v-1.8l-2-1.4v-4L21 16.8V15l-7.7-4.4V4.7c0-1.2-.5-2.2-1.3-2.2z"/></svg></span>New airport</span><span className="prj-val has">$4B</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Terminal commercial fit-out &amp; tenant improvement</span><span className="chip">Architectural, decorative &amp; PoE lighting</span><span className="chip">On-site data center &amp; telecom / cell sites</span><span className="chip">Access control &amp; security systems</span><span className="chip">Backup power &amp; energy storage</span><span className="chip">Cargo &amp; catering cold storage</span><span className="chip">Sourcing</span>
+      <span className="chip">Terminal commercial fit-out &amp; tenant improvement</span><span className="chip">Architectural, decorative &amp; PoE lighting</span><span className="chip">On-site data center &amp; telecom / cell sites</span><span className="chip">Access control &amp; security systems</span><span className="chip energy">Backup power &amp; energy storage</span><span className="chip energy">EV charging plaza</span><span className="chip">Cargo &amp; catering cold storage</span><span className="chip">Sourcing</span>
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.04</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 6.3V20"/><path d="M8.5 9h7"/><path d="M5 12.5a7 7 0 0 0 14 0"/><path d="M5 12.5l-2 .6M5 12.5l1.6 1.8M19 12.5l2 .6M19 12.5l-1.6 1.8"/></svg></span>Mubarak Al-Kabir port</span><span className="prj-val has">$4.5B</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Warehouses, cold storage &amp; industrial buildings</span><span className="chip">High-mast, area &amp; flood lighting</span><span className="chip">Access control &amp; perimeter security</span><span className="chip">Power &amp; energy storage</span><span className="chip">Telecom site deployment</span><span className="chip">Materials &amp; equipment sourcing</span>
+      <span className="chip">Warehouses, cold storage &amp; industrial buildings</span><span className="chip">High-mast, area &amp; flood lighting</span><span className="chip">Access control &amp; perimeter security</span><span className="chip energy">Power &amp; energy storage</span><span className="chip energy">Fleet EV charging</span><span className="chip">Telecom site deployment</span><span className="chip">Materials &amp; equipment sourcing</span>
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.05</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><path d="M12 9.5V21"/><path d="M8.5 21h7"/><circle cx="12" cy="7" r="1.6"/><path d="M8.7 10.3a4.5 4.5 0 0 1 6.6 0"/><path d="M6 8a8 8 0 0 1 12 0"/></svg></span>Data &amp; telecom infrastructure</span><span className="prj-val">National</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Data center design &amp; build</span><span className="chip">PoE network-powered lighting</span><span className="chip">Physical access control</span><span className="chip">Supporting power &amp; backup systems</span>
+      <span className="chip">Data center design &amp; build</span><span className="chip">PoE network-powered lighting</span><span className="chip">Physical access control</span><span className="chip energy">Supporting power &amp; backup systems</span>
       </div></div></div></div>
       </div>
       </div>
@@ -304,10 +305,35 @@ export default function Landing() {
       <div className="lite-grid stagger">
       <div className="lite-card tilt"><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><path d="M5 6h14"/><path d="M6 6v2.2M12 6v2.2M18 6v2.2"/><circle cx="6" cy="11" r="2.6"/><circle cx="12" cy="11" r="2.6"/><circle cx="18" cy="11" r="2.6"/></svg></span><span className="k">Partner 01</span><h3>Estelle&rsquo;s Lighting</h3>
       <p>Custom hospitality and commercial lighting &mdash; chandeliers, sconces, architectural and exterior fixtures, with controls.</p>
-      <div className="meta">Hospitality &amp; commercial &nbsp;<span>/</span>&nbsp; Gulf-region offices</div></div>
+      <div className="meta">Hospitality &amp; commercial &nbsp;<span>/</span>&nbsp; Gulf-region offices</div><a className="lite-link" href="https://estelleslighting.com" target="_blank" rel="noopener">estelleslighting.com &rarr;</a></div>
       <div className="lite-card tilt"><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 9V4M12 15v5M9 12H4M15 12h5"/><circle cx="12" cy="4" r="1.5"/><circle cx="12" cy="20" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="20" cy="12" r="1.5"/></svg></span><span className="k">Partner 02</span><h3>PoE Lighting</h3>
       <p>Power-over-Ethernet lighting &mdash; driverless, network-powered LED fixtures with smart controls and IoT integration.</p>
-      <div className="meta">Power-over-Ethernet &nbsp;<span>/</span>&nbsp; Smart &amp; networked</div></div>
+      <div className="meta">Power-over-Ethernet &nbsp;<span>/</span>&nbsp; Smart &amp; networked</div><a className="lite-link" href="https://poelightingusa.com" target="_blank" rel="noopener">poelightingusa.com &rarr;</a></div>
+      </div>
+      </div>
+      </section>
+
+      <section className="lighting energy-sec">
+      <span className="glow"></span>
+      <div className="wrap">
+      <div className="sec-head reveal">
+      <span className="eyebrow">Energy &amp; EV charging &mdash; partner network</span>
+      <h2>Powered, stored, and <span style={{ color: "var(--ev)" }}>charged sustainably.</span></h2>
+      <p>UDGOK&rsquo;s energy scope &mdash; on-site generation, battery storage, and EV charging &mdash; is delivered with specialist partners across the program.</p>
+      </div>
+      <div className="lite-grid stagger">
+      <div className="lite-card tilt energy"><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="9" height="18" rx="2"/><path d="M9.6 6.6l-2.3 4.1h2L8.7 15l3-4.7H9.3l.3-3.7z"/><path d="M13 8h2.4a1.6 1.6 0 0 1 1.6 1.6V16a1.5 1.5 0 0 0 3 0v-4.6L18.4 9.8"/></svg></span><span className="k">Partner 03</span><h3>EVBOLT</h3>
+      <p>Smart &amp; sustainable EV charging &mdash; AC Level II and DC fast chargers up to 240kW+, with networked management and the EVBOLT+ app.</p>
+      <div className="meta">AC &amp; DC fast charging &nbsp;<span>/</span>&nbsp; Smart &amp; networked</div>
+      <a className="lite-link" href="https://evbolt.com" target="_blank" rel="noopener">evbolt.com &rarr;</a></div>
+      <div className="lite-card tilt energy"><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3"/><path d="M10.6 9l-2.2 3.4h2L9.7 15.6l3-3.7h-2.1L10.6 9z"/></svg></span><span className="k">Partner 04</span><h3>z1power</h3>
+      <p>Battery energy storage &mdash; lithium-ion systems for backup power and peak shaving across program sites.</p>
+      <div className="meta">Battery storage &nbsp;<span>/</span>&nbsp; Backup &amp; peak shaving</div>
+      <a className="lite-link" href="https://z1power.com" target="_blank" rel="noopener">z1power.com &rarr;</a></div>
+      <div className="lite-card tilt energy"><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5M5.1 5.1l1.8 1.8M17.1 17.1l1.8 1.8M18.9 5.1l-1.8 1.8M6.9 17.1l-1.8 1.8"/></svg></span><span className="k">Partner 05</span><h3>solar-tec</h3>
+      <p>Solar generation &mdash; on-site photovoltaic systems integrated with storage for clean, resilient power.</p>
+      <div className="meta">Solar PV &nbsp;<span>/</span>&nbsp; On-site generation</div>
+      <a className="lite-link" href="https://solar-tec.com" target="_blank" rel="noopener">solar-tec.com &rarr;</a></div>
       </div>
       </div>
       </section>
@@ -323,8 +349,9 @@ export default function Landing() {
       <div className="contactrow reveal">
       <a href="mailto:projects@udgok.com" className="primary">projects@udgok.com</a>
       <a href="https://udgok.com" target="_blank" rel="noopener">udgok.com</a>
-      <a href="https://z1power.com" target="_blank" rel="noopener">z1power.com</a>
-      <a href="https://solar-tec.com" target="_blank" rel="noopener">solar-tec.com</a>
+      <a href="https://z1power.com" target="_blank" rel="noopener" className="energy">z1power.com</a>
+      <a href="https://solar-tec.com" target="_blank" rel="noopener" className="energy">solar-tec.com</a>
+      <a href="https://evbolt.com" target="_blank" rel="noopener" className="energy">evbolt.com</a>
       </div>
       <div className="foot-base"><div className="b">UDGOK<span className="dot">.</span></div><LiveClock variant="full" /></div>
       </div>
