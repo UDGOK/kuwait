@@ -355,3 +355,8 @@
   .ci svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;color:var(--ember)}
   .ci:hover svg{color:var(--ember)}
   @media(max-width:680px){.modal-gallery{grid-template-columns:1fr 1fr}.modal-groups{grid-template-columns:1fr}}
+
+  /* ---------- form submit states ---------- */
+  .btn-primary:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+  .sent-banner.err{border-color:rgba(255,107,107,.45);background:rgba(255,107,107,.08)}
+  .sent-banner.err a{color:var(--ember-lt);text-decoration:underline}

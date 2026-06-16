@@ -37,6 +37,7 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [err, setErr] = useState({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
 
   // nav solidify + reveals
   useEffect(() => {
@@ -110,15 +111,46 @@ export default function ContactPage() {
     return Object.keys(e).length === 0;
   };
 
-  const submit = () => {
+  const servicesText = () => {
+    if (Object.keys(services).length === 0) return "-";
+    return PILLARS.filter((p) => p.key in services)
+      .map((p) => { const subs = services[p.key]; return p.name + (subs.length ? " (" + subs.join(", ") + ")" : ""); })
+      .join("; ");
+  };
+
+  const submit = async () => {
     if (!validate()) {
       document.querySelector(".field.err input")?.focus();
       return;
     }
-    const subject = `Service request — ${details.company || details.name} (Kuwait program)`;
-    const href = `mailto:yasir@udgok.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
-    window.location.href = href;
-    setSent(true);
+    setSending(true);
+    setSent(false);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/yasir@udgok.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Service request — ${details.company || details.name} (Kuwait program)`,
+          _template: "table",
+          _captcha: "false",
+          Name: details.name,
+          Company: details.company || "-",
+          Email: details.email,
+          Phone: details.phone || "-",
+          Projects: projects.length ? projects.join(", ") : "-",
+          Services: servicesText(),
+          "Estimated scale": budget,
+          Timeline: timeline,
+          Details: message || "-",
+        }),
+      });
+      if (res.ok) setSent(true);
+      else setSent("error");
+    } catch (err) {
+      setSent("error");
+    } finally {
+      setSending(false);
+    }
   };
 
   const copy = async () => {
@@ -250,12 +282,13 @@ export default function ContactPage() {
             </div>
 
             <div className="submit-row reveal">
-              <button className="btn-primary" onClick={submit}>Send request</button>
+              <button className="btn-primary" onClick={submit} disabled={sending}>{sending ? "Sending\u2026" : "Send request"}</button>
               <button className="btn-ghost" onClick={copy}>Copy summary</button>
-              <span className="form-note">Opens your email to yasir@udgok.com with everything filled in. Prefer to send manually? Use &ldquo;Copy summary.&rdquo;</span>
+              <span className="form-note">Sends your request straight to UDGOK. Prefer to send manually? Use &ldquo;Copy summary&rdquo; to copy it to your clipboard.</span>
             </div>
 
-            {sent === true && <div className="sent-banner reveal in">Your email draft is ready in your mail app — just hit send. Thank you.</div>}
+            {sent === true && <div className="sent-banner reveal in">Thank you &mdash; your request has been sent to UDGOK. We&rsquo;ll be in touch shortly.</div>}
+            {sent === "error" && <div className="sent-banner err reveal in">Sorry, that didn&rsquo;t go through. Please email <a href="mailto:yasir@udgok.com">yasir@udgok.com</a> directly, or try again.</div>}
             {sent === "copied" && <div className="sent-banner reveal in">Summary copied to your clipboard.</div>}
           </div>
         </div>
