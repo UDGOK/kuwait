@@ -1,0 +1,270 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import LiveClock from "./LiveClock";
+
+const PROJECTS = [
+  "New housing cities",
+  "Labor city",
+  "New airport",
+  "Mubarak Al-Kabir port",
+  "Data & telecom infrastructure",
+  "Other / multiple",
+];
+
+const PILLARS = [
+  { key: "construction", name: "Construction & Design-Build", subs: ["Healthcare", "Commercial", "Industrial", "Preconstruction", "Commissioning", "VDC"] },
+  { key: "energy", name: "Energy & Power", subs: ["Solar", "Storage"] },
+  { key: "lighting", name: "Lighting Systems", subs: ["LED", "PoE", "Decorative", "Controls"] },
+  { key: "mission", name: "Mission-Critical Infrastructure", subs: ["Data center", "Telecom"] },
+  { key: "security", name: "Security Systems", subs: ["Access control", "Perimeter"] },
+  { key: "sourcing", name: "Sourcing & Delivery", subs: ["Materials sourcing", "Full-scope build"] },
+];
+
+const BUDGETS = ["To be discussed", "Under $5M", "$5M – $25M", "$25M – $100M", "$100M+"];
+const TIMELINES = ["Planning stage", "Immediate", "1 – 3 months", "3 – 6 months", "6 – 12 months"];
+
+const CheckMark = () => (
+  <svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-9" /></svg>
+);
+
+export default function ContactPage() {
+  const [details, setDetails] = useState({ name: "", company: "", email: "", phone: "" });
+  const [projects, setProjects] = useState([]);
+  const [services, setServices] = useState({}); // { pillarKey: [subs...] }
+  const [budget, setBudget] = useState(BUDGETS[0]);
+  const [timeline, setTimeline] = useState(TIMELINES[0]);
+  const [message, setMessage] = useState("");
+  const [err, setErr] = useState({});
+  const [sent, setSent] = useState(false);
+
+  // nav solidify + reveals
+  useEffect(() => {
+    const nav = document.getElementById("nav");
+    const onScroll = () => nav && nav.classList.toggle("solid", window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    const io = new IntersectionObserver(
+      (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    return () => { window.removeEventListener("scroll", onScroll); io.disconnect(); };
+  }, []);
+
+  const toggleProject = (p) =>
+    setProjects((prev) => (prev.includes(p) ? prev.filter((x) => x !== p) : [...prev, p]));
+
+  const togglePillar = (key) =>
+    setServices((prev) => {
+      const next = { ...prev };
+      if (key in next) delete next[key];
+      else next[key] = [];
+      return next;
+    });
+
+  const toggleSub = (key, sub) =>
+    setServices((prev) => {
+      const cur = prev[key] || [];
+      const subs = cur.includes(sub) ? cur.filter((s) => s !== sub) : [...cur, sub];
+      return { ...prev, [key]: subs };
+    });
+
+  const serviceCount = Object.keys(services).length;
+
+  const summary = useMemo(() => {
+    const lines = [];
+    lines.push("SERVICE REQUEST — UDGOK / Kuwait Infrastructure Program");
+    lines.push("");
+    lines.push(`Name:    ${details.name || "-"}`);
+    lines.push(`Company: ${details.company || "-"}`);
+    lines.push(`Email:   ${details.email || "-"}`);
+    lines.push(`Phone:   ${details.phone || "-"}`);
+    lines.push("");
+    lines.push(`Project(s): ${projects.length ? projects.join(", ") : "-"}`);
+    lines.push("");
+    lines.push("Services requested:");
+    if (serviceCount === 0) lines.push("  - (none selected yet)");
+    else {
+      PILLARS.forEach((p) => {
+        if (p.key in services) {
+          const subs = services[p.key];
+          lines.push(`  - ${p.name}${subs.length ? ": " + subs.join(", ") : ""}`);
+        }
+      });
+    }
+    lines.push("");
+    lines.push(`Estimated scale: ${budget}`);
+    lines.push(`Timeline:        ${timeline}`);
+    lines.push("");
+    lines.push("Details:");
+    lines.push(message || "-");
+    return lines.join("\n");
+  }, [details, projects, services, serviceCount, budget, timeline, message]);
+
+  const validate = () => {
+    const e = {};
+    if (!details.name.trim()) e.name = true;
+    if (!details.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(details.email)) e.email = true;
+    setErr(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const submit = () => {
+    if (!validate()) {
+      document.querySelector(".field.err input")?.focus();
+      return;
+    }
+    const subject = `Service request — ${details.company || details.name} (Kuwait program)`;
+    const href = `mailto:projects@udgok.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
+    window.location.href = href;
+    setSent(true);
+  };
+
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(summary); setSent("copied"); } catch (_) {}
+  };
+
+  return (
+    <>
+      <div id="grain" />
+      <div id="progress" style={{ display: "none" }} />
+
+      <nav id="nav">
+        <a href="/" className="brand">UDGOK<span className="dot">.</span></a>
+        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+          <span className="nav-clock"><LiveClock variant="compact" /></span>
+          <a href="/" className="backlink">Home</a>
+        </div>
+      </nav>
+
+      <main className="page">
+        <section className="contact-hero">
+          <span className="glow" />
+          <div className="wrap reveal">
+            <span className="eyebrow">Service request — Kuwait program</span>
+            <h1>Tell us exactly what you <span className="shimmer">need.</span></h1>
+            <p>
+              Specify the projects and systems you&rsquo;re scoping and UDGOK will respond with the
+              right team and packages. The more detail you share, the sharper our proposal.
+            </p>
+            <div className="hero-status" style={{ marginTop: "28px" }}>
+              <LiveClock variant="full" />
+            </div>
+          </div>
+        </section>
+
+        <div className="wrap">
+          <div className="form">
+            {/* 01 — details */}
+            <div className="fsec reveal">
+              <div className="fsec-head"><span className="fsec-num">01</span><span className="fsec-title">Your details</span></div>
+              <div className="grid2">
+                <div className={"field" + (err.name ? " err" : "")}>
+                  <label>Full name *</label>
+                  <input value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} placeholder="e.g. Abdullah Abushaibah" />
+                </div>
+                <div className="field">
+                  <label>Company / organization</label>
+                  <input value={details.company} onChange={(e) => setDetails({ ...details, company: e.target.value })} placeholder="Organization name" />
+                </div>
+                <div className={"field" + (err.email ? " err" : "")}>
+                  <label>Email *</label>
+                  <input type="email" value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })} placeholder="name@company.com" />
+                </div>
+                <div className="field">
+                  <label>Phone</label>
+                  <input value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value })} placeholder="+965 …" />
+                </div>
+              </div>
+            </div>
+
+            {/* 02 — projects */}
+            <div className="fsec reveal">
+              <div className="fsec-head"><span className="fsec-num">02</span><span className="fsec-title">Which project(s)?</span></div>
+              <div className="toggle-row">
+                {PROJECTS.map((p) => (
+                  <span key={p} className={"toggle" + (projects.includes(p) ? " on" : "")} onClick={() => toggleProject(p)} role="button" tabIndex={0}
+                    onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggleProject(p)}>{p}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* 03 — services */}
+            <div className="fsec reveal">
+              <div className="fsec-head">
+                <span className="fsec-num">03</span><span className="fsec-title">Services required</span>
+                {serviceCount > 0 && <span className="req-count" style={{ marginLeft: "auto" }}>{serviceCount} selected</span>}
+              </div>
+              <div className="svc-grid">
+                {PILLARS.map((p) => {
+                  const on = p.key in services;
+                  return (
+                    <div key={p.key} className={"svc" + (on ? " on" : "")} onClick={() => togglePillar(p.key)}>
+                      <div className="svc-top">
+                        <span className="svc-name">{p.name}</span>
+                        <span className="svc-check"><CheckMark /></span>
+                      </div>
+                      <div className="svc-subs" onClick={(e) => e.stopPropagation()}>
+                        {p.subs.map((s) => (
+                          <span key={s} className={"subchip" + ((services[p.key] || []).includes(s) ? " on" : "")} onClick={() => toggleSub(p.key, s)}>{s}</span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 04 — scale & timeline */}
+            <div className="fsec reveal">
+              <div className="fsec-head"><span className="fsec-num">04</span><span className="fsec-title">Scale &amp; timeline</span></div>
+              <div className="grid2">
+                <div className="field">
+                  <label>Estimated scale</label>
+                  <select value={budget} onChange={(e) => setBudget(e.target.value)}>
+                    {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
+                  </select>
+                </div>
+                <div className="field">
+                  <label>Timeline</label>
+                  <select value={timeline} onChange={(e) => setTimeline(e.target.value)}>
+                    {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* 05 — details */}
+            <div className="fsec reveal">
+              <div className="fsec-head"><span className="fsec-num">05</span><span className="fsec-title">Project details</span></div>
+              <div className="field">
+                <label>Anything specific we should know</label>
+                <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Scope, sites, key requirements, deadlines, partners involved…" />
+              </div>
+            </div>
+
+            <div className="submit-row reveal">
+              <button className="btn-primary" onClick={submit}>Send request</button>
+              <button className="btn-ghost" onClick={copy}>Copy summary</button>
+              <span className="form-note">Opens your email to projects@udgok.com with everything filled in. Prefer to send manually? Use &ldquo;Copy summary.&rdquo;</span>
+            </div>
+
+            {sent === true && <div className="sent-banner reveal in">Your email draft is ready in your mail app — just hit send. Thank you.</div>}
+            {sent === "copied" && <div className="sent-banner reveal in">Summary copied to your clipboard.</div>}
+          </div>
+        </div>
+
+        <footer>
+          <span className="glow" />
+          <div className="wrap">
+            <div className="foot-base">
+              <a href="/" className="b">UDGOK<span className="dot">.</span></a>
+              <LiveClock variant="full" />
+            </div>
+          </div>
+        </footer>
+      </main>
+    </>
+  );
+}
