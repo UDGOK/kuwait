@@ -19,21 +19,31 @@ export default function Landing() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // cursor spotlight
+    // cursor spotlight — update only on movement (CSS transition smooths it); no perpetual rAF
     const spot = document.getElementById("spot");
-    let raf = 0;
-    let tx = window.innerWidth / 2, ty = window.innerHeight / 2, cx = tx, cy = ty;
-    const onMove = (e) => { tx = e.clientX; ty = e.clientY; };
+    let queued = false;
+    let mx = 0, my = 0;
+    const onMove = (e) => {
+      mx = e.clientX; my = e.clientY;
+      if (!queued) {
+        queued = true;
+        requestAnimationFrame(() => { queued = false; if (spot) spot.style.transform = `translate(${mx}px,${my}px)`; });
+      }
+    };
     if (spot) {
-      if (!reduce && fine) {
-        window.addEventListener("mousemove", onMove, { passive: true });
-        const loop = () => {
-          cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
-          spot.style.transform = `translate(${cx}px,${cy}px)`;
-          raf = requestAnimationFrame(loop);
-        };
-        loop();
-      } else { spot.style.opacity = "0"; }
+      if (!reduce && fine) window.addEventListener("mousemove", onMove, { passive: true });
+      else spot.style.opacity = "0";
+    }
+
+    // pause hero glow animation once the hero scrolls out of view
+    const hero = document.querySelector(".hero");
+    let heroIO;
+    if (hero && !reduce) {
+      heroIO = new IntersectionObserver(
+        (es) => es.forEach((e) => hero.classList.toggle("paused", !e.isIntersecting)),
+        { threshold: 0 }
+      );
+      heroIO.observe(hero);
     }
 
     // hero parallax
@@ -128,8 +138,8 @@ export default function Landing() {
       window.removeEventListener("scroll", onParallax);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("resize", onResize);
-      if (raf) cancelAnimationFrame(raf);
       io.disconnect(); sio.disconnect();
+      if (heroIO) heroIO.disconnect();
       tilt.forEach(([c, mm, ml]) => { c.removeEventListener("mousemove", mm); c.removeEventListener("mouseleave", ml); });
       clicks.forEach(([b, h]) => b.removeEventListener("click", h));
     };
