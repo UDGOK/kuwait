@@ -1,9 +1,70 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LiveClock from "./LiveClock";
 
+const DETAILS = {
+  construction: { num: "01", accent: "ember", title: "Construction & Design-Build",
+    lead: "Full-scope vertical construction and design-build — from healthcare and commercial to heavy industrial, managed end to end.",
+    groups: [
+      { label: "Sectors", items: ["Healthcare — hospitals, clinics, surgery & eye centers", "Commercial — retail, F&B, office, tenant improvement", "Industrial — warehouses, cold storage, manufacturing", "Mixed-use & community buildings"] },
+      { label: "Delivery", items: ["Preconstruction — budgeting & value engineering", "VDC / BIM coordination", "Quality assurance & commissioning", "Turnkey handover"] },
+    ] },
+  energy: { num: "02", accent: "green", title: "Energy & Power",
+    lead: "Clean, resilient power across every site — solar generation, lithium battery storage, and smart EV charging, delivered with our energy partners.",
+    images: [
+      { src: "https://evbolt.com/wp-content/uploads/2024/01/vision-360-1-1-538x1024.png", alt: "EVBOLT Vision 360" },
+      { src: "https://evbolt.com/wp-content/uploads/2022/08/Apex-10-715x1024.png", alt: "EVBOLT Apex 10" },
+      { src: "https://www.z1power.com/cdn/shop/files/Z1Power_Homepage_Image.png?v=1778782659&width=1200", alt: "Z1Power LiFePO4" },
+    ],
+    groups: [
+      { label: "Solar — solar-tec", items: ["On-site photovoltaic generation", "Solar + storage integration", "Grid-tie & off-grid systems"] },
+      { label: "Battery storage — z1power", items: ["LiFePO4 systems, UL 9540A certified", "Backup power & peak shaving", "4,000+ cycles, 10-year design life"] },
+      { label: "EV charging — EVBOLT", items: ["AC Level II chargers, 7.5–19 kW", "DC fast charging, 30–240 kW (to 320 kW)", "Networked management & EVBOLT+ app", "Hospitality, retail, fleet & parking"] },
+    ] },
+  lighting: { num: "03", accent: "ember", title: "Lighting Systems",
+    lead: "Specification-grade lighting for every environment — architectural, decorative, and network-powered — delivered with Estelle's Lighting and PoE Lighting.",
+    groups: [
+      { label: "Fixtures — Estelle's Lighting", items: ["Interior, exterior & architectural LED", "Decorative — chandeliers, pendants, sconces", "Hospitality & commercial grade", "Gulf-region offices (Oman, Riyadh)"] },
+      { label: "PoE Lighting", items: ["Power-over-Ethernet, network-powered", "Driverless, low-voltage, smart-controlled", "IoT & building-management integration"] },
+      { label: "Controls", items: ["Dimming, scenes & scheduling", "DALI / 0–10V & wireless control"] },
+    ] },
+  mission: { num: "04", accent: "ember", title: "Mission-Critical Infrastructure",
+    lead: "Data center and mission-critical facility delivery — engineered for uptime, redundancy, and resilience.",
+    groups: [
+      { label: "Data centers", items: ["Server hall design & build", "White-space fit-out & equipment rooms", "Structured cabling & containment"] },
+      { label: "Resilience", items: ["UPS & backup power", "Redundant power & cooling (N+1)", "Monitoring & BMS integration"] },
+    ] },
+  security: { num: "05", accent: "ember", title: "Security Systems",
+    lead: "Integrated electronic security — from access control to perimeter protection and surveillance.",
+    groups: [
+      { label: "Access & identity", items: ["Access control design & installation", "Credential & visitor management", "Door hardware integration"] },
+      { label: "Surveillance & perimeter", items: ["CCTV / IP video systems", "Perimeter intrusion detection", "Command & monitoring integration"] },
+    ] },
+  sourcing: { num: "06", accent: "ember", title: "Sourcing & Delivery",
+    lead: "Global sourcing and full-scope build — materials, equipment, and logistics managed to the program's standards.",
+    groups: [
+      { label: "Sourcing", items: ["Construction materials & equipment", "Vetted supplier network", "Specification & compliance"] },
+      { label: "Delivery", items: ["Logistics & expediting", "Full-scope construction services", "On-site delivery & install"] },
+    ] },
+};
+
 export default function Landing() {
+  const [active, setActive] = useState(null);
+  const [closing, setClosing] = useState(false);
+  const open = (k) => { setClosing(false); setActive(k); };
+  const close = () => { setClosing(true); setTimeout(() => { setActive(null); setClosing(false); }, 280); };
+  const onBackdrop = (e) => { if (e.target === e.currentTarget) close(); };
+  const cardProps = (k) => ({ onClick: () => open(k), role: "button", tabIndex: 0, onKeyDown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(k); } } });
+
+  useEffect(() => {
+    if (!active) return;
+    const onKey = (e) => { if (e.key === "Escape") close(); };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow; document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
+  }, [active]);
+
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
     const fine = window.matchMedia("(pointer:fine)").matches;
@@ -228,29 +289,29 @@ export default function Landing() {
       <p>A complete capability set across the program &mdash; from healthcare design-build to network-powered lighting and mission-critical infrastructure.</p>
       </div>
       <div className="pillar-grid stagger" id="pillarGrid">
-      <div className="pillar tilt"><span className="picon"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M10 8.6V6.3a2 2 0 0 1 4 0V8.6"/></svg></span><span className="pnum">PILLAR 01</span><h3>Construction &amp; Design-Build</h3><ul>
+      <div className="pillar tilt" {...cardProps("construction")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M10 8.6V6.3a2 2 0 0 1 4 0V8.6"/></svg></span><span className="pnum">PILLAR 01</span><h3>Construction &amp; Design-Build</h3><ul>
       <li><b>Healthcare</b> &mdash; medical, dental, surgery centers, eye clinics</li>
       <li><b>Commercial</b> &mdash; retail, restaurant, office, tenant improvement</li>
       <li><b>Industrial</b> &mdash; warehouses, cold storage, manufacturing</li>
       <li><b>Preconstruction</b> &mdash; budgeting, planning, scheduling</li>
       <li><b>Commissioning</b> &mdash; quality assurance and handover</li>
       <li><b>VDC</b> &mdash; Virtual Design &amp; Construction</li></ul></div>
-      <div className="pillar tilt energy"><span className="picon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span className="pnum">PILLAR 02</span><h3>Energy &amp; Power</h3><ul>
+      <div className="pillar tilt energy" {...cardProps("energy")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span className="pnum">PILLAR 02</span><h3>Energy &amp; Power</h3><ul>
       <li><b>Solar</b> &mdash; on-site solar generation (with solar-tec)</li>
       <li><b>Storage</b> &mdash; lithium-ion battery systems for backup power and peak shaving (with z1power)</li>
       <li><b>EV Charging</b> &mdash; smart AC &amp; DC fast charging (with EVBOLT)</li></ul></div>
-      <div className="pillar tilt"><span className="picon"><svg viewBox="0 0 24 24"><path d="M9.5 18h5"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.7c.8.7 1.3 1.4 1.3 2.3h5c0-.9.5-1.6 1.3-2.3A6 6 0 0 0 12 3z"/></svg></span><span className="pnum">PILLAR 03</span><h3>Lighting Systems <span className="tag-new">New</span></h3><ul>
+      <div className="pillar tilt" {...cardProps("lighting")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M9.5 18h5"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.7c.8.7 1.3 1.4 1.3 2.3h5c0-.9.5-1.6 1.3-2.3A6 6 0 0 0 12 3z"/></svg></span><span className="pnum">PILLAR 03</span><h3>Lighting Systems <span className="tag-new">New</span></h3><ul>
       <li><b>LED</b> &mdash; interior, exterior, and architectural fixtures</li>
       <li><b>PoE</b> &mdash; Power-over-Ethernet, network-powered smart lighting</li>
       <li><b>Decorative</b> &mdash; chandeliers, pendants, sconces, feature lighting</li>
       <li><b>Controls</b> &mdash; dimming and building-management integration</li></ul></div>
-      <div className="pillar tilt"><span className="picon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01"/><path d="M7 16.5h.01"/><path d="M11 7.5h6"/><path d="M11 16.5h6"/></svg></span><span className="pnum">PILLAR 04</span><h3>Mission-Critical Infrastructure</h3><ul>
+      <div className="pillar tilt" {...cardProps("mission")}><span className="picon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01"/><path d="M7 16.5h.01"/><path d="M11 7.5h6"/><path d="M11 16.5h6"/></svg></span><span className="pnum">PILLAR 04</span><h3>Mission-Critical Infrastructure</h3><ul>
       <li><b>Data</b> &mdash; data center design and build</li>
-      <li><b>Telecom</b> &mdash; cell and telecom site deployment</li></ul></div>
-      <div className="pillar tilt"><span className="picon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7-7 8.5C8 18 5 15.5 5 11V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span className="pnum">PILLAR 05</span><h3>Security Systems</h3><ul>
+      <li><b>Resilience</b> &mdash; UPS, redundancy, power and cooling</li></ul></div>
+      <div className="pillar tilt" {...cardProps("security")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7-7 8.5C8 18 5 15.5 5 11V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span className="pnum">PILLAR 05</span><h3>Security Systems</h3><ul>
       <li><b>Access</b> &mdash; access control system design and installation</li>
       <li><b>Perimeter</b> &mdash; site and perimeter security integration</li></ul></div>
-      <div className="pillar tilt"><span className="picon"><svg viewBox="0 0 24 24"><path d="M12 3 4 7v10l8 4 8-4V7z"/><path d="M4 7l8 4 8-4"/><path d="M12 11v10"/></svg></span><span className="pnum">PILLAR 06</span><h3>Sourcing &amp; Delivery</h3><ul>
+      <div className="pillar tilt" {...cardProps("sourcing")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M12 3 4 7v10l8 4 8-4V7z"/><path d="M4 7l8 4 8-4"/><path d="M12 11v10"/></svg></span><span className="pnum">PILLAR 06</span><h3>Sourcing &amp; Delivery</h3><ul>
       <li><b>Sourcing</b> &mdash; construction materials and equipment</li>
       <li><b>Build</b> &mdash; full-scope construction services</li></ul></div>
       </div>
@@ -280,11 +341,11 @@ export default function Landing() {
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.03</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><path d="M12 2.5c-.8 0-1.3 1-1.3 2.2v3.9L3 13v1.8l7.7-2.2v4l-2 1.4V21l3.3-.9 3.3.9v-1.8l-2-1.4v-4L21 16.8V15l-7.7-4.4V4.7c0-1.2-.5-2.2-1.3-2.2z"/></svg></span>New airport</span><span className="prj-val has">$4B</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Terminal commercial fit-out &amp; tenant improvement</span><span className="chip">Architectural, decorative &amp; PoE lighting</span><span className="chip">On-site data center &amp; telecom / cell sites</span><span className="chip">Access control &amp; security systems</span><span className="chip energy">Backup power &amp; energy storage</span><span className="chip energy">EV charging plaza</span><span className="chip">Cargo &amp; catering cold storage</span><span className="chip">Sourcing</span>
+      <span className="chip">Terminal commercial fit-out &amp; tenant improvement</span><span className="chip">Architectural, decorative &amp; PoE lighting</span><span className="chip">On-site data center &amp; equipment rooms</span><span className="chip">Access control &amp; security systems</span><span className="chip energy">Backup power &amp; energy storage</span><span className="chip energy">EV charging plaza</span><span className="chip">Cargo &amp; catering cold storage</span><span className="chip">Sourcing</span>
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.04</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 6.3V20"/><path d="M8.5 9h7"/><path d="M5 12.5a7 7 0 0 0 14 0"/><path d="M5 12.5l-2 .6M5 12.5l1.6 1.8M19 12.5l2 .6M19 12.5l-1.6 1.8"/></svg></span>Mubarak Al-Kabir port</span><span className="prj-val has">$4.5B</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Warehouses, cold storage &amp; industrial buildings</span><span className="chip">High-mast, area &amp; flood lighting</span><span className="chip">Access control &amp; perimeter security</span><span className="chip energy">Power &amp; energy storage</span><span className="chip energy">Fleet EV charging</span><span className="chip">Telecom site deployment</span><span className="chip">Materials &amp; equipment sourcing</span>
+      <span className="chip">Warehouses, cold storage &amp; industrial buildings</span><span className="chip">High-mast, area &amp; flood lighting</span><span className="chip">Access control &amp; perimeter security</span><span className="chip energy">Power &amp; energy storage</span><span className="chip energy">Fleet EV charging</span><span className="chip">Materials &amp; equipment sourcing</span>
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.05</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><path d="M12 9.5V21"/><path d="M8.5 21h7"/><circle cx="12" cy="7" r="1.6"/><path d="M8.7 10.3a4.5 4.5 0 0 1 6.6 0"/><path d="M6 8a8 8 0 0 1 12 0"/></svg></span>Data &amp; telecom infrastructure</span><span className="prj-val">National</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
@@ -347,7 +408,8 @@ export default function Landing() {
       <a href="/contact" className="footer-cta">Start a service request &rarr;</a>
       </div>
       <div className="contactrow reveal">
-      <a href="mailto:projects@udgok.com" className="primary">projects@udgok.com</a>
+      <a href="mailto:yasir@udgok.com" className="primary">yasir@udgok.com</a>
+      <a href="tel:+19185203823">+1.918.520.3823</a>
       <a href="https://udgok.com" target="_blank" rel="noopener">udgok.com</a>
       <a href="https://z1power.com" target="_blank" rel="noopener" className="energy">z1power.com</a>
       <a href="https://solar-tec.com" target="_blank" rel="noopener" className="energy">solar-tec.com</a>
@@ -355,6 +417,35 @@ export default function Landing() {
       </div>
       <div className="foot-base"><div className="b">UDGOK<span className="dot">.</span></div><LiveClock variant="full" /></div>
       </div>
-      </footer>    </>
+      </footer>      {active && (() => { const d = DETAILS[active]; return (
+        <div className={"modal-backdrop" + (closing ? " closing" : "")} onClick={onBackdrop}>
+          <div className={"modal-card" + (d.accent === "green" ? " green" : "") + (closing ? " closing" : "")} role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-x" onClick={close} aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+            <span className="modal-num">PILLAR {d.num}</span>
+            <h2 className="modal-title">{d.title}</h2>
+            <p className="modal-lead">{d.lead}</p>
+            {d.images && (
+              <div className="modal-gallery">
+                {d.images.map((im) => (
+                  <figure className="mg-fig" key={im.src}>
+                    <img src={im.src} alt={im.alt} loading="lazy" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+                    <figcaption>{im.alt}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
+            <div className="modal-groups">
+              {d.groups.map((g) => (
+                <div className="mgroup" key={g.label}>
+                  <h3 className="mgroup-h">{g.label}</h3>
+                  <ul>{g.items.map((it) => (<li key={it}>{it}</li>))}</ul>
+                </div>
+              ))}
+            </div>
+            <a className="modal-cta" href="/contact">Request this service &rarr;</a>
+          </div>
+        </div>
+      ); })()}
+    </>
   );
 }

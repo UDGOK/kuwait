@@ -116,7 +116,7 @@ export default function ContactPage() {
       return;
     }
     const subject = `Service request — ${details.company || details.name} (Kuwait program)`;
-    const href = `mailto:projects@udgok.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
+    const href = `mailto:yasir@udgok.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
     window.location.href = href;
     setSent(true);
   };
@@ -151,6 +151,11 @@ export default function ContactPage() {
             <div className="hero-status" style={{ marginTop: "28px" }}>
               <LiveClock variant="full" />
             </div>
+            <div className="contact-info">
+              <a className="ci" href="mailto:yasir@udgok.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>yasir@udgok.com</a>
+              <a className="ci" href="tel:+19185203823"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>+1.918.520.3823</a>
+              <a className="ci" href="https://wa.me/19185203823" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7"/></svg>WhatsApp</a>
+            </div>
           </div>
         </section>
 
@@ -162,7 +167,7 @@ export default function ContactPage() {
               <div className="grid2">
                 <div className={"field" + (err.name ? " err" : "")}>
                   <label>Full name *</label>
-                  <input value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} placeholder="e.g. Abdullah Abushaibah" />
+                  <input value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} placeholder="Enter your name" />
                 </div>
                 <div className="field">
                   <label>Company / organization</label>
@@ -247,7 +252,7 @@ export default function ContactPage() {
             <div className="submit-row reveal">
               <button className="btn-primary" onClick={submit}>Send request</button>
               <button className="btn-ghost" onClick={copy}>Copy summary</button>
-              <span className="form-note">Opens your email to projects@udgok.com with everything filled in. Prefer to send manually? Use &ldquo;Copy summary.&rdquo;</span>
+              <span className="form-note">Opens your email to yasir@udgok.com with everything filled in. Prefer to send manually? Use &ldquo;Copy summary.&rdquo;</span>
             </div>
 
             {sent === true && <div className="sent-banner reveal in">Your email draft is ready in your mail app — just hit send. Thank you.</div>}
