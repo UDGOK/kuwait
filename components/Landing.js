@@ -47,6 +47,21 @@ const DETAILS = {
       { label: "Sourcing", items: ["Construction materials & equipment", "Vetted supplier network", "Specification & compliance"] },
       { label: "Delivery", items: ["Logistics & expediting", "Full-scope construction services", "On-site delivery & install"] },
     ] },
+  estelles: { kicker: "Lighting partner · Estelle's Group", accent: "ember", title: "Estelle's Group",
+    lead: "Our lighting partner and a full hospitality & multi-family group — certified lighting, smart PoE controls, LED mirrors, architectural doors, solar and EV charging, delivered across North America and the Gulf.",
+    pdf: "/Estelles-Group-Company-Profile.pdf",
+    stats: [
+      { value: "1,600+", label: "Projects delivered" },
+      { value: "15+", label: "Hospitality brands" },
+      { value: "IHG", label: "Certified vendor" },
+      { value: "2008", label: "Est. in Houston" },
+    ],
+    groups: [
+      { label: "Lighting", items: ["Interior, architectural & exterior LED", "Lighted mirrors & bespoke fixtures", "Hospitality, multi-family & commercial"] },
+      { label: "Smart & sustainable", items: ["PoE smart lighting & controls (LED Industries)", "Solar energy (SolarTec)", "EV charging (EVBOLT)"] },
+      { label: "Group of companies", items: ["Estelles & Impulse Lighting", "Dezine Multi-Family Lighting", "MAK Door Industries — fire-rated doors", "Aqua Mirrors & Smart Glass", "Bloorz — vanities, shower & surrounds"] },
+      { label: "Credentials & reach", items: ["IHG-certified vendor (1 of 2 in N. America)", "cUL, CSA, UL & DarkSky rated", "1,600+ projects since 2008", "Houston HQ · Toronto · South Asia"] },
+    ] },
 };
 
 export default function Landing() {
@@ -364,9 +379,10 @@ export default function Landing() {
       <p>UDGOK&rsquo;s lighting scope is delivered with two established partners &mdash; spanning decorative hospitality fixtures to network-powered smart lighting.</p>
       </div>
       <div className="lite-grid stagger">
-      <div className="lite-card tilt"><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><path d="M5 6h14"/><path d="M6 6v2.2M12 6v2.2M18 6v2.2"/><circle cx="6" cy="11" r="2.6"/><circle cx="12" cy="11" r="2.6"/><circle cx="18" cy="11" r="2.6"/></svg></span><span className="k">Partner 01</span><h3>Estelle&rsquo;s Lighting</h3>
-      <p>Custom hospitality and commercial lighting &mdash; chandeliers, sconces, architectural and exterior fixtures, with controls.</p>
-      <div className="meta">Hospitality &amp; commercial &nbsp;<span>/</span>&nbsp; Gulf-region offices</div><a className="lite-link" href="https://estelleslighting.com" target="_blank" rel="noopener">estelleslighting.com &rarr;</a></div>
+      <div className="lite-card tilt" {...cardProps("estelles")}><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><path d="M5 6h14"/><path d="M6 6v2.2M12 6v2.2M18 6v2.2"/><circle cx="6" cy="11" r="2.6"/><circle cx="12" cy="11" r="2.6"/><circle cx="18" cy="11" r="2.6"/></svg></span><span className="k">Partner 01 &middot; Estelle&rsquo;s Group</span><h3>Estelle&rsquo;s Lighting</h3>
+      <p>Our hospitality &amp; multi-family lighting partner &mdash; certified fixtures, mirrors, doors and smart energy, delivered across North America and the Gulf.</p>
+      <div className="meta">IHG-certified &nbsp;<span>/</span>&nbsp; 1,600+ projects &nbsp;<span>/</span>&nbsp; cUL &middot; CSA &middot; DarkSky</div>
+      <div className="lite-links"><a className="lite-link" href="https://estelleslighting.com" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>estelleslighting.com &rarr;</a><a className="lite-link alt" href="/Estelles-Group-Company-Profile.pdf" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>Company profile (PDF) &darr;</a></div></div>
       <div className="lite-card tilt"><span className="beam"></span><span className="lite-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 9V4M12 15v5M9 12H4M15 12h5"/><circle cx="12" cy="4" r="1.5"/><circle cx="12" cy="20" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="20" cy="12" r="1.5"/></svg></span><span className="k">Partner 02</span><h3>PoE Lighting</h3>
       <p>Power-over-Ethernet lighting &mdash; driverless, network-powered LED fixtures with smart controls and IoT integration.</p>
       <div className="meta">Power-over-Ethernet &nbsp;<span>/</span>&nbsp; Smart &amp; networked</div><a className="lite-link" href="https://poelightingusa.com" target="_blank" rel="noopener">poelightingusa.com &rarr;</a></div>
@@ -421,9 +437,16 @@ export default function Landing() {
         <div className={"modal-backdrop" + (closing ? " closing" : "")} onClick={onBackdrop}>
           <div className={"modal-card" + (d.accent === "green" ? " green" : "") + (closing ? " closing" : "")} role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
             <button className="modal-x" onClick={close} aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-            <span className="modal-num">PILLAR {d.num}</span>
+            <span className="modal-num">{d.kicker ? d.kicker : "PILLAR " + d.num}</span>
             <h2 className="modal-title">{d.title}</h2>
             <p className="modal-lead">{d.lead}</p>
+            {d.stats && (
+              <div className="modal-stats">
+                {d.stats.map((st) => (
+                  <div className="mstat" key={st.label}><span className="mstat-v">{st.value}</span><span className="mstat-l">{st.label}</span></div>
+                ))}
+              </div>
+            )}
             {d.images && (
               <div className="modal-gallery">
                 {d.images.map((im) => (
@@ -442,7 +465,10 @@ export default function Landing() {
                 </div>
               ))}
             </div>
-            <a className="modal-cta" href="/contact">Request this service &rarr;</a>
+            <div className="modal-actions">
+              {d.pdf && (<a className="modal-cta" href={d.pdf} target="_blank" rel="noopener">Download company profile (PDF) &darr;</a>)}
+              <a className={"modal-cta" + (d.pdf ? " ghost" : "")} href="/contact">Request this service &rarr;</a>
+            </div>
           </div>
         </div>
       ); })()}
