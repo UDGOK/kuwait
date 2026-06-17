@@ -417,3 +417,23 @@
   /* mirror the hero line-art to the left so it sits clear of right-aligned Arabic text */
   html[dir="rtl"] .hero-art{right:auto;left:0;transform:scaleX(-1)}
   html[dir="rtl"] .modal-x{right:auto;left:18px}
+
+  /* ---------- engagement models ---------- */
+  .engage .glow{ background:radial-gradient(circle,rgba(255,122,0,.10),transparent 70%); }
+  .engage-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:38px; }
+  .engage-card{ position:relative; background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.012)); border:1px solid var(--glass-brd,rgba(255,255,255,.10)); border-radius:20px; padding:34px 34px 30px; }
+  .engage-card .ec-num{ font-family:var(--mono); font-size:.72rem; letter-spacing:.2em; color:var(--ember); }
+  .engage-card h3{ font-size:1.5rem; font-weight:700; margin:14px 0 6px; letter-spacing:-.01em; }
+  .engage-card .ec-sub{ color:var(--mute); font-size:.95rem; line-height:1.55; margin-bottom:20px; }
+  .engage-card ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
+  .engage-card li{ position:relative; padding-left:22px; color:#cfd4db; font-size:.98rem; line-height:1.45; }
+  .engage-card li:before{ content:""; position:absolute; left:0; top:.55em; width:7px; height:7px; border-radius:2px; background:var(--ember); }
+  .engage-card.alt .ec-num{ color:var(--ember-lt); }
+  .engage-note{ margin-top:24px; font-family:var(--mono); font-size:.78rem; letter-spacing:.04em; color:var(--mute); }
+  @media (max-width:760px){ .engage-grid{ grid-template-columns:1fr; } }
+  /* RTL */
+  html[dir="rtl"] .engage-card li{ padding-left:0; padding-right:22px; }
+  html[dir="rtl"] .engage-card li:before{ left:auto; right:0; }
+  html[dir="rtl"] .engage-card .ec-num{ direction:ltr; unicode-bidi:isolate; }
+  html[dir="rtl"] .engage-note{ font-family:"IBM Plex Sans Arabic",var(--sans); letter-spacing:normal; }
+  html[dir="rtl"] .engage-card .ec-num{ display:block; text-align:right; }

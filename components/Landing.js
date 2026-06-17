@@ -266,8 +266,8 @@ export default function Landing() {
       </div>
       <div className="wrap" id="heroContent">
       <span className="eyebrow rise d1">DOC // KWT-01 — REV 2026.1</span>
-      <h1 className="rise d2">{t("The systems behind ")}<span className="shimmer">{t("Kuwait\u2019s flagship build.")}</span></h1>
-      <p className="lede rise d3">{t("UDGOK is positioned to deliver the buildings, power, lighting, and mission-critical systems for the program\u2019s landmark projects \u2014 from design-build to energy, lighting, security, and sourcing.")}</p>
+      <h1 className="rise d2">{t("The technical partner behind ")}<span className="shimmer">{t("Kuwait\u2019s flagship build.")}</span></h1>
+      <p className="lede rise d3">{t("UDGOK advises on, specifies, and integrates the buildings, power, lighting, and mission-critical systems across the program\u2019s landmark projects \u2014 as owner\u2019s representative and technical consultant, and as a delivery partner where engaged to build.")}</p>
       <div className="hero-status rise d3"><LiveClock variant="full" /></div>
       <div className="hero-meta rise d4">
       <div className="hm"><span className="n">6</span><span className="l">{t("Capability pillars")}</span></div>
@@ -282,7 +282,7 @@ export default function Landing() {
       <span className="glow"></span>
       <div className="wrap reveal">
       <span className="eyebrow" style={{display:"block",marginBottom:"22px"}}>{t("The brief")}</span>
-      <h2><span className="q">{t("Kuwait is building at national scale.")}</span>{t(" UDGOK is scoped to deliver the facility and systems packages inside it \u2014 ")}<span className="shimmer">{t("design-build, energy, lighting, security, and sourcing.")}</span></h2>
+      <h2><span className="q">{t("Kuwait is building at national scale.")}</span>{t(" UDGOK advises on and integrates the systems inside it \u2014 and delivers where engaged \u2014 across ")}<span className="shimmer">{t("design-build, energy, lighting, security, and sourcing.")}</span></h2>
       </div>
       </section>
 
@@ -297,13 +297,52 @@ export default function Landing() {
       </div>
       </section>
 
+      <section className="engage">
+      <span className="glow"></span>
+      <div className="wrap">
+      <div className="sec-head reveal">
+      <span className="eyebrow">{t("How we engage")}</span>
+      <h2>{t("Two ways UDGOK supports the program.")}</h2>
+      <p>{t("Engage UDGOK as an independent advisor and owner\u2019s representative, or as a design-build and systems delivery partner \u2014 scoped per package to suit the program\u2019s procurement.")}</p>
+      </div>
+      <div className="engage-grid stagger" id="engageGrid">
+      <div className="engage-card reveal">
+      <span className="ec-num">MODEL 01</span>
+      <h3>{t("Advisory & Owner\u2019s Representative")}</h3>
+      <p className="ec-sub">{t("Independent technical advisory and project / construction management (PMC).")}</p>
+      <ul>
+      <li>{t("Preconstruction, budgeting & planning")}</li>
+      <li>{t("Design review & technical standards")}</li>
+      <li>{t("Specifications & procurement support")}</li>
+      <li>{t("Systems-integration advisory")}</li>
+      <li>{t("Commissioning & QA oversight")}</li>
+      <li>{t("Technical due diligence")}</li>
+      </ul>
+      </div>
+      <div className="engage-card reveal alt">
+      <span className="ec-num">MODEL 02</span>
+      <h3>{t("Design-Build & Systems Delivery")}</h3>
+      <p className="ec-sub">{t("Turnkey execution of buildings and systems, delivered with our specialist partners.")}</p>
+      <ul>
+      <li>{t("Vertical construction & fit-out")}</li>
+      <li>{t("Energy, lighting, security & data-center systems")}</li>
+      <li>{t("Sourcing, equipment & logistics")}</li>
+      <li>{t("Commissioning & handover")}</li>
+      <li>{t("Delivered with our partner network")}</li>
+      </ul>
+      </div>
+      </div>
+      <p className="engage-note reveal">{t("Independent advisory and delivery are scoped separately, package by package, in line with procurement rules.")}</p>
+      </div>
+      </section>
+
       <section className="pillars">
       <span className="glow"></span>
       <div className="wrap">
       <div className="sec-head reveal">
-      <span className="eyebrow">{t("Services we provide")}</span>
-      <h2>{t("Six pillars. One accountable delivery partner.")}</h2>
-      <p>{t("A complete capability set across the program \u2014 from healthcare design-build to network-powered lighting and mission-critical infrastructure.")}</p>
+      <span className="eyebrow">{t("What we advise on and deliver")}</span>
+      <h2>{t("Six pillars. One accountable technical partner.")}</h2>
+      <p>{t("A complete capability set we advise on, integrate, and deliver \u2014 from healthcare to network-powered lighting and mission-critical infrastructure.")}</p>
       </div>
       <div className="pillar-grid stagger" id="pillarGrid">
       <div className="pillar tilt" {...cardProps("construction")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M10 8.6V6.3a2 2 0 0 1 4 0V8.6"/></svg></span><span className="pnum">PILLAR 01</span><h3>{t("Construction & Design-Build")}</h3><ul>
@@ -341,7 +380,7 @@ export default function Landing() {
       <div className="sec-head reveal">
       <span className="eyebrow">{t("Where we fit \u2014 Kuwait program")}</span>
       <h2>{t("Scoped to the flagship projects.")}</h2>
-      <p>{t("UDGOK is positioned to deliver the building, systems, and sourcing packages inside the program\u2019s landmark developments. Select a project to see the proposed scope.")}</p>
+      <p>{t("UDGOK is positioned to advise on, integrate, and deliver the building, systems, and sourcing scope inside the program\u2019s landmark developments. Select a project to see the proposed scope.")}</p>
       </div>
       <div className="scaleband reveal">
       <div className="bignum"><span className="u">$</span>8.5B<span className="u">+</span></div>

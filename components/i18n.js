@@ -5,6 +5,41 @@ import { createContext, useContext, useEffect, useState } from "react";
 // Arabic (MSA) translations keyed by the exact English string.
 // Any key not present falls back to English, so rendering is always safe.
 export const AR = {
+  // --- advisory reframe ---
+  "The technical partner behind ": "الشريك التقني الذي يقف خلف ",
+  "UDGOK advises on, specifies, and integrates the buildings, power, lighting, and mission-critical systems across the program's landmark projects — as owner's representative and technical consultant, and as a delivery partner where engaged to build.":
+    "تقدّم UDGOK الاستشارة والمواصفات وتكامل الأنظمة للمباني والطاقة والإضاءة والأنظمة الحيوية عبر المشاريع الكبرى في البرنامج — بصفة ممثّل المالك والمستشار التقني، وكشريك تنفيذ عند التكليف بالبناء.",
+  " UDGOK advises on and integrates the systems inside it — and delivers where engaged — across ":
+    " وتقدّم UDGOK الاستشارة وتكامل الأنظمة داخله — وتُنفّذ عند التكليف — في ",
+  "What we advise on and deliver": "ما نقدّم فيه الاستشارة وننفّذه",
+  "Six pillars. One accountable technical partner.": "ست ركائز. شريك تقني واحد مسؤول.",
+  "A complete capability set we advise on, integrate, and deliver — from healthcare to network-powered lighting and mission-critical infrastructure.":
+    "منظومة قدرات متكاملة نقدّم فيها الاستشارة والتكامل والتنفيذ — من الرعاية الصحية إلى الإضاءة المدعومة بالشبكة والبنية التحتية الحيوية.",
+  "UDGOK is positioned to advise on, integrate, and deliver the building, systems, and sourcing scope inside the program's landmark developments. Select a project to see the proposed scope.":
+    "UDGOK مهيّأة لتقديم الاستشارة والتكامل والتنفيذ لنطاق المباني والأنظمة والتوريد داخل المشاريع الكبرى للبرنامج. اختر مشروعاً لعرض النطاق المقترح.",
+  // engagement section
+  "How we engage": "كيف نعمل معكم",
+  "Two ways UDGOK supports the program.": "طريقتان تدعم بهما UDGOK البرنامج.",
+  "Engage UDGOK as an independent advisor and owner's representative, or as a design-build and systems delivery partner — scoped per package to suit the program's procurement.":
+    "تعاقدوا مع UDGOK كمستشار مستقل وممثّل للمالك، أو كشريك للتصميم والبناء وتنفيذ الأنظمة — يُحدّد النطاق لكل حزمة بما يتوافق مع إجراءات المناقصات.",
+  "Advisory & Owner's Representative": "الاستشارة وتمثيل المالك",
+  "Independent technical advisory and project / construction management (PMC).": "استشارات تقنية مستقلة وإدارة مشاريع وإنشاءات (PMC).",
+  "Preconstruction, budgeting & planning": "ما قبل الإنشاء والموازنة والتخطيط",
+  "Design review & technical standards": "مراجعة التصميم والمعايير التقنية",
+  "Specifications & procurement support": "المواصفات ودعم المشتريات",
+  "Systems-integration advisory": "استشارات تكامل الأنظمة",
+  "Commissioning & QA oversight": "الإشراف على التشغيل وضمان الجودة",
+  "Technical due diligence": "العناية التقنية الواجبة",
+  "Design-Build & Systems Delivery": "التصميم والبناء وتنفيذ الأنظمة",
+  "Turnkey execution of buildings and systems, delivered with our specialist partners.": "تنفيذ متكامل للمباني والأنظمة، يُسلّم مع شركائنا المتخصّصين.",
+  "Vertical construction & fit-out": "الإنشاء الرأسي والتجهيز",
+  "Energy, lighting, security & data-center systems": "أنظمة الطاقة والإضاءة والأمن ومراكز البيانات",
+  "Sourcing, equipment & logistics": "التوريد والمعدات واللوجستيات",
+  "Commissioning & handover": "التشغيل والتسليم",
+  "Delivered with our partner network": "يُسلّم مع شبكة شركائنا",
+  "Independent advisory and delivery are scoped separately, package by package, in line with procurement rules.":
+    "تُحدّد الاستشارة المستقلة والتنفيذ بشكل منفصل، حزمةً تلو الأخرى، بما يتوافق مع قواعد المناقصات.",
+
   // --- reworded (capability / program-scale, neutral AI) ---
   "UDGOK is positioned to deliver the buildings, power, lighting, and mission-critical systems for the program's landmark projects — from design-build to energy, lighting, security, and sourcing.":
     "UDGOK مهيّأة لتقديم المباني والطاقة والإضاءة والأنظمة الحيوية للمشاريع الكبرى في البرنامج — من التصميم والبناء إلى الطاقة والإضاءة والأمن والتوريد.",
