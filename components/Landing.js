@@ -30,10 +30,10 @@ const DETAILS = {
       { label: "Controls", items: ["Dimming, scenes & scheduling", "DALI / 0–10V & wireless control"] },
     ] },
   mission: { num: "04", accent: "ember", title: "Mission-Critical Infrastructure",
-    lead: "Data center and mission-critical facility delivery — engineered for uptime, redundancy, and resilience.",
+    lead: "AI, HPC, and mission-critical data center delivery — engineered for accelerated compute, uptime, and resilience.",
     groups: [
-      { label: "Data centers", items: ["Server hall design & build", "White-space fit-out & equipment rooms", "Structured cabling & containment"] },
-      { label: "Resilience", items: ["UPS & backup power", "Redundant power & cooling (N+1)", "Monitoring & BMS integration"] },
+      { label: "AI & data centers", items: ["Accelerated compute halls — NVIDIA & Cerebras", "Server hall design & build", "White-space fit-out & equipment rooms"] },
+      { label: "Power & cooling", items: ["High-density power & busway", "Direct-to-chip & liquid cooling", "UPS, N+1 redundancy & BMS"] },
     ] },
   security: { num: "05", accent: "ember", title: "Security Systems",
     lead: "Integrated electronic security — from access control to perimeter protection and surveillance.",
@@ -321,7 +321,7 @@ export default function Landing() {
       <li><b>Decorative</b> &mdash; chandeliers, pendants, sconces, feature lighting</li>
       <li><b>Controls</b> &mdash; dimming and building-management integration</li></ul></div>
       <div className="pillar tilt" {...cardProps("mission")}><span className="picon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01"/><path d="M7 16.5h.01"/><path d="M11 7.5h6"/><path d="M11 16.5h6"/></svg></span><span className="pnum">PILLAR 04</span><h3>Mission-Critical Infrastructure</h3><ul>
-      <li><b>Data</b> &mdash; data center design and build</li>
+      <li><b>AI data centers</b> &mdash; design &amp; execution (NVIDIA, Cerebras)</li>
       <li><b>Resilience</b> &mdash; UPS, redundancy, power and cooling</li></ul></div>
       <div className="pillar tilt" {...cardProps("security")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7-7 8.5C8 18 5 15.5 5 11V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span className="pnum">PILLAR 05</span><h3>Security Systems</h3><ul>
       <li><b>Access</b> &mdash; access control system design and installation</li>
@@ -364,8 +364,33 @@ export default function Landing() {
       </div></div></div></div>
       <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.05</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><path d="M12 9.5V21"/><path d="M8.5 21h7"/><circle cx="12" cy="7" r="1.6"/><path d="M8.7 10.3a4.5 4.5 0 0 1 6.6 0"/><path d="M6 8a8 8 0 0 1 12 0"/></svg></span>Data &amp; telecom infrastructure</span><span className="prj-val">National</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">Scope</div><div className="prj-scope">
-      <span className="chip">Data center design &amp; build</span><span className="chip">PoE network-powered lighting</span><span className="chip">Physical access control</span><span className="chip energy">Supporting power &amp; backup systems</span>
+      <span className="chip">AI / HPC data centers</span><span className="chip">Data center design &amp; build</span><span className="chip">PoE network-powered lighting</span><span className="chip">Physical access control</span><span className="chip energy">Supporting power &amp; backup systems</span>
       </div></div></div></div>
+      </div>
+      </div>
+      </section>
+
+      <section className="ai" id="ai">
+      <span className="glow"></span>
+      <div className="wrap">
+      <div className="sec-head reveal">
+      <span className="eyebrow">AI infrastructure &mdash; design &amp; execution</span>
+      <h2>Built for the <span className="shimmer">AI era.</span></h2>
+      <p>UDGOK designs and executes AI and high-performance data centers end to end &mdash; white space, high-density power, advanced cooling, and network fabric &mdash; engineered for the most demanding accelerated-compute platforms, and delivered complete with our dedicated partners.</p>
+      </div>
+      <div className="ai-platforms reveal">
+      <span className="ai-pl-label">Designed for</span>
+      <span className="ai-chip"><b>NVIDIA</b><em>GPU compute clusters</em></span>
+      <span className="ai-chip"><b>Cerebras</b><em>wafer-scale AI systems</em></span>
+      <span className="ai-chip alt"><b>Your dedicated stack</b><em>built with our partners</em></span>
+      </div>
+      <div className="ai-grid stagger">
+      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/><rect x="10.5" y="10.5" width="3" height="3" rx=".5"/></svg></span><h3>Accelerated compute halls</h3><p>High-density GPU and wafer-scale deployments &mdash; DGX / HGX-class clusters and Cerebras CS systems.</p></div>
+      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><h3>High-density power</h3><p>Busway distribution, UPS, and N+1 redundancy engineered for AI rack densities.</p></div>
+      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><path d="M12 3s5 5.5 5 10a5 5 0 0 1-10 0c0-4.5 5-10 5-10z"/><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5"/></svg></span><h3>Advanced cooling</h3><p>Direct-to-chip and liquid cooling, rear-door heat exchangers, and thermal management.</p></div>
+      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><path d="M7 11l10-4.6M7 13l10 4.6"/></svg></span><h3>Low-latency fabric</h3><p>High-bandwidth network and interconnect design for training and inference at scale.</p></div>
+      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V6l7-3 7 3v15"/><path d="M9 21v-5h6v5"/><path d="M9 9h2M13 9h2M9 12.5h2M13 12.5h2"/></svg></span><h3>Design-build delivery</h3><p>Site, structure, MEP and fit-out &mdash; executed end to end and commissioned for uptime.</p></div>
+      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><path d="M8 12l2.5 2.5L12 13l1.5 1.5L16 12"/><path d="M3 8l4-2 5 2 5-2 4 2v8l-4 2-5-2-5 2-4-2z"/></svg></span><h3>Delivered with partners</h3><p>We design and deliver the complete facility with our specialist engineering partners.</p></div>
       </div>
       </div>
       </section>
