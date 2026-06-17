@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "./i18n";
 
 // Live world clock. Kuwait City (program locale) + Central US (UDGOK home base).
 const ZONES = [
@@ -19,6 +20,7 @@ function fmt(date, tz, seconds = true) {
 }
 
 export default function LiveClock({ variant = "full" }) {
+  const { t } = useLang();
   const [now, setNow] = useState(null);
 
   useEffect(() => {
@@ -58,7 +60,7 @@ export default function LiveClock({ variant = "full" }) {
       <span className="lc-dot" />
       {ZONES.map((z, i) => (
         <span key={z.tz} className="lc-zone">
-          <span className="lc-city">{z.label}</span>
+          <span className="lc-city">{t(z.label)}</span>
           <span className="lc-time">{fmt(now, z.tz, true)}</span>
           {i < ZONES.length - 1 && <span className="lc-sep">/</span>}
         </span>

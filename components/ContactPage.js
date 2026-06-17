@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import LiveClock from "./LiveClock";
+import { useLang, LangToggle } from "./i18n";
 
 const PROJECTS = [
   "New housing cities",
@@ -16,7 +17,7 @@ const PILLARS = [
   { key: "construction", name: "Construction & Design-Build", subs: ["Healthcare", "Commercial", "Industrial", "Preconstruction", "Commissioning", "VDC"] },
   { key: "energy", name: "Energy & Power", subs: ["Solar", "Storage"] },
   { key: "lighting", name: "Lighting Systems", subs: ["LED", "PoE", "Decorative", "Controls"] },
-  { key: "mission", name: "Mission-Critical Infrastructure", subs: ["Data center", "Telecom"] },
+  { key: "mission", name: "Mission-Critical Infrastructure", subs: ["AI data centers", "Data center", "Resilience"] },
   { key: "security", name: "Security Systems", subs: ["Access control", "Perimeter"] },
   { key: "sourcing", name: "Sourcing & Delivery", subs: ["Materials sourcing", "Full-scope build"] },
 ];
@@ -29,6 +30,7 @@ const CheckMark = () => (
 );
 
 export default function ContactPage() {
+  const { t } = useLang();
   const [details, setDetails] = useState({ name: "", company: "", email: "", phone: "" });
   const [projects, setProjects] = useState([]);
   const [services, setServices] = useState({}); // { pillarKey: [subs...] }
@@ -164,9 +166,10 @@ export default function ContactPage() {
 
       <nav id="nav">
         <a href="/" className="brand">UDGOK<span className="dot">.</span></a>
-        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
           <span className="nav-clock"><LiveClock variant="compact" /></span>
-          <a href="/" className="backlink">Home</a>
+          <LangToggle />
+          <a href="/" className="backlink">{t("Home")}</a>
         </div>
       </nav>
 
@@ -174,19 +177,16 @@ export default function ContactPage() {
         <section className="contact-hero">
           <span className="glow" />
           <div className="wrap reveal">
-            <span className="eyebrow">Service request — Kuwait program</span>
-            <h1>Tell us exactly what you <span className="shimmer">need.</span></h1>
-            <p>
-              Specify the projects and systems you&rsquo;re scoping and UDGOK will respond with the
-              right team and packages. The more detail you share, the sharper our proposal.
-            </p>
+            <span className="eyebrow">{t("Service request \u2014 Kuwait program")}</span>
+            <h1>{t("Tell us exactly what you ")}<span className="shimmer">{t("need.")}</span></h1>
+            <p>{t("Specify the projects and systems you\u2019re scoping and UDGOK will respond with the right team and packages. The more detail you share, the sharper our proposal.")}</p>
             <div className="hero-status" style={{ marginTop: "28px" }}>
               <LiveClock variant="full" />
             </div>
             <div className="contact-info">
               <a className="ci" href="mailto:yasir@udgok.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>yasir@udgok.com</a>
               <a className="ci" href="tel:+19185203823"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>+1.918.520.3823</a>
-              <a className="ci" href="https://wa.me/19185203823" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7"/></svg>WhatsApp</a>
+              <a className="ci" href="https://wa.me/19185203823" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7"/></svg>{t("WhatsApp")}</a>
             </div>
           </div>
         </section>
@@ -195,22 +195,22 @@ export default function ContactPage() {
           <div className="form">
             {/* 01 — details */}
             <div className="fsec reveal">
-              <div className="fsec-head"><span className="fsec-num">01</span><span className="fsec-title">Your details</span></div>
+              <div className="fsec-head"><span className="fsec-num">01</span><span className="fsec-title">{t("Your details")}</span></div>
               <div className="grid2">
                 <div className={"field" + (err.name ? " err" : "")}>
-                  <label>Full name *</label>
-                  <input value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} placeholder="Enter your name" />
+                  <label>{t("Full name *")}</label>
+                  <input value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} placeholder={t("Enter your name")} />
                 </div>
                 <div className="field">
-                  <label>Company / organization</label>
-                  <input value={details.company} onChange={(e) => setDetails({ ...details, company: e.target.value })} placeholder="Organization name" />
+                  <label>{t("Company / organization")}</label>
+                  <input value={details.company} onChange={(e) => setDetails({ ...details, company: e.target.value })} placeholder={t("Organization name")} />
                 </div>
                 <div className={"field" + (err.email ? " err" : "")}>
-                  <label>Email *</label>
+                  <label>{t("Email *")}</label>
                   <input type="email" value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })} placeholder="name@company.com" />
                 </div>
                 <div className="field">
-                  <label>Phone</label>
+                  <label>{t("Phone")}</label>
                   <input value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value })} placeholder="+965 …" />
                 </div>
               </div>
@@ -218,11 +218,11 @@ export default function ContactPage() {
 
             {/* 02 — projects */}
             <div className="fsec reveal">
-              <div className="fsec-head"><span className="fsec-num">02</span><span className="fsec-title">Which project(s)?</span></div>
+              <div className="fsec-head"><span className="fsec-num">02</span><span className="fsec-title">{t("Which project(s)?")}</span></div>
               <div className="toggle-row">
                 {PROJECTS.map((p) => (
                   <span key={p} className={"toggle" + (projects.includes(p) ? " on" : "")} onClick={() => toggleProject(p)} role="button" tabIndex={0}
-                    onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggleProject(p)}>{p}</span>
+                    onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggleProject(p)}>{t(p)}</span>
                 ))}
               </div>
             </div>
@@ -230,8 +230,8 @@ export default function ContactPage() {
             {/* 03 — services */}
             <div className="fsec reveal">
               <div className="fsec-head">
-                <span className="fsec-num">03</span><span className="fsec-title">Services required</span>
-                {serviceCount > 0 && <span className="req-count" style={{ marginLeft: "auto" }}>{serviceCount} selected</span>}
+                <span className="fsec-num">03</span><span className="fsec-title">{t("Services required")}</span>
+                {serviceCount > 0 && <span className="req-count" style={{ marginLeft: "auto" }}>{serviceCount} {t("selected")}</span>}
               </div>
               <div className="svc-grid">
                 {PILLARS.map((p) => {
@@ -239,12 +239,12 @@ export default function ContactPage() {
                   return (
                     <div key={p.key} className={"svc" + (on ? " on" : "")} onClick={() => togglePillar(p.key)}>
                       <div className="svc-top">
-                        <span className="svc-name">{p.name}</span>
+                        <span className="svc-name">{t(p.name)}</span>
                         <span className="svc-check"><CheckMark /></span>
                       </div>
                       <div className="svc-subs" onClick={(e) => e.stopPropagation()}>
                         {p.subs.map((s) => (
-                          <span key={s} className={"subchip" + ((services[p.key] || []).includes(s) ? " on" : "")} onClick={() => toggleSub(p.key, s)}>{s}</span>
+                          <span key={s} className={"subchip" + ((services[p.key] || []).includes(s) ? " on" : "")} onClick={() => toggleSub(p.key, s)}>{t(s)}</span>
                         ))}
                       </div>
                     </div>
@@ -255,18 +255,18 @@ export default function ContactPage() {
 
             {/* 04 — scale & timeline */}
             <div className="fsec reveal">
-              <div className="fsec-head"><span className="fsec-num">04</span><span className="fsec-title">Scale &amp; timeline</span></div>
+              <div className="fsec-head"><span className="fsec-num">04</span><span className="fsec-title">{t("Scale & timeline")}</span></div>
               <div className="grid2">
                 <div className="field">
-                  <label>Estimated scale</label>
+                  <label>{t("Estimated scale")}</label>
                   <select value={budget} onChange={(e) => setBudget(e.target.value)}>
-                    {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
+                    {BUDGETS.map((b) => <option key={b} value={b}>{t(b)}</option>)}
                   </select>
                 </div>
                 <div className="field">
-                  <label>Timeline</label>
+                  <label>{t("Timeline")}</label>
                   <select value={timeline} onChange={(e) => setTimeline(e.target.value)}>
-                    {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
+                    {TIMELINES.map((tl) => <option key={tl} value={tl}>{t(tl)}</option>)}
                   </select>
                 </div>
               </div>
@@ -274,22 +274,22 @@ export default function ContactPage() {
 
             {/* 05 — details */}
             <div className="fsec reveal">
-              <div className="fsec-head"><span className="fsec-num">05</span><span className="fsec-title">Project details</span></div>
+              <div className="fsec-head"><span className="fsec-num">05</span><span className="fsec-title">{t("Project details")}</span></div>
               <div className="field">
-                <label>Anything specific we should know</label>
-                <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Scope, sites, key requirements, deadlines, partners involved…" />
+                <label>{t("Anything specific we should know")}</label>
+                <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder={t("Scope, sites, key requirements, deadlines, partners involved\u2026")} />
               </div>
             </div>
 
             <div className="submit-row reveal">
-              <button className="btn-primary" onClick={submit} disabled={sending}>{sending ? "Sending\u2026" : "Send request"}</button>
-              <button className="btn-ghost" onClick={copy}>Copy summary</button>
-              <span className="form-note">Sends your request straight to UDGOK. Prefer to send manually? Use &ldquo;Copy summary&rdquo; to copy it to your clipboard.</span>
+              <button className="btn-primary" onClick={submit} disabled={sending}>{sending ? t("Sending\u2026") : t("Send request")}</button>
+              <button className="btn-ghost" onClick={copy}>{t("Copy summary")}</button>
+              <span className="form-note">{t("Sends your request straight to UDGOK. Prefer to send manually? Use \u201cCopy summary\u201d to copy it to your clipboard.")}</span>
             </div>
 
-            {sent === true && <div className="sent-banner reveal in">Thank you &mdash; your request has been sent to UDGOK. We&rsquo;ll be in touch shortly.</div>}
-            {sent === "error" && <div className="sent-banner err reveal in">Sorry, that didn&rsquo;t go through. Please email <a href="mailto:yasir@udgok.com">yasir@udgok.com</a> directly, or try again.</div>}
-            {sent === "copied" && <div className="sent-banner reveal in">Summary copied to your clipboard.</div>}
+            {sent === true && <div className="sent-banner reveal in">{t("Thank you \u2014 your request has been sent to UDGOK. We\u2019ll be in touch shortly.")}</div>}
+            {sent === "error" && <div className="sent-banner err reveal in">{t("Sorry, that didn\u2019t go through. Please email ")}<a href="mailto:yasir@udgok.com">yasir@udgok.com</a>{t(" directly, or try again.")}</div>}
+            {sent === "copied" && <div className="sent-banner reveal in">{t("Summary copied to your clipboard.")}</div>}
           </div>
         </div>
 

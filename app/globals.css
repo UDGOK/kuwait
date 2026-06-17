@@ -396,3 +396,24 @@
   .ai-card h3{font-size:1.16rem;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
   .ai-card p{color:var(--mute);font-size:.96rem;line-height:1.55}
   @media(max-width:900px){.ai-grid{grid-template-columns:1fr}}
+
+  /* ---------- language toggle + RTL / Arabic ---------- */
+  .lang-toggle{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--text);background:var(--glass);border:1px solid var(--glass-brd);border-radius:100px;padding:7px 14px;cursor:pointer;transition:border-color .25s var(--ease),color .25s var(--ease)}
+  .lang-toggle:hover{border-color:var(--ember);color:var(--ember)}
+  html[dir="rtl"] body{font-family:"IBM Plex Sans Arabic",var(--sans)}
+  html[dir="rtl"] .lang-toggle{font-family:"IBM Plex Sans Arabic",var(--sans);letter-spacing:normal}
+  /* Arabic doesn't use uppercase/letter-spacing; rebind mono-styled UI text to the Arabic face */
+  html[dir="rtl"] .eyebrow,html[dir="rtl"] .k,html[dir="rtl"] .ai-pl-label,html[dir="rtl"] .ai-chip em,
+  html[dir="rtl"] .mgroup-h,html[dir="rtl"] .modal-num,html[dir="rtl"] .mstat-l,html[dir="rtl"] .meta,
+  html[dir="rtl"] .req-count,html[dir="rtl"] .form-note,html[dir="rtl"] .lc-city,html[dir="rtl"] .ci,
+  html[dir="rtl"] .hm .l,html[dir="rtl"] .lab,html[dir="rtl"] .slabel,html[dir="rtl"] .fsec-title,
+  html[dir="rtl"] .nav-cta,html[dir="rtl"] .backlink,html[dir="rtl"] .scrollcue,html[dir="rtl"] .lite-link{
+    font-family:"IBM Plex Sans Arabic",var(--sans);text-transform:none;letter-spacing:normal}
+  /* keep codes, domains, and numerals LTR so they read correctly inside RTL */
+  html[dir="rtl"] .lc-time,html[dir="rtl"] .lc-code,html[dir="rtl"] .prj-code,html[dir="rtl"] .prj-val,
+  html[dir="rtl"] .bignum,html[dir="rtl"] .stat .num,html[dir="rtl"] .hm .n,html[dir="rtl"] .pnum,
+  html[dir="rtl"] .fsec-num,html[dir="rtl"] .mstat-v{direction:ltr;unicode-bidi:isolate}
+  html[dir="rtl"] .lite-link[href^="http"]{direction:ltr;unicode-bidi:isolate}
+  /* mirror the hero line-art to the left so it sits clear of right-aligned Arabic text */
+  html[dir="rtl"] .hero-art{right:auto;left:0;transform:scaleX(-1)}
+  html[dir="rtl"] .modal-x{right:auto;left:18px}
