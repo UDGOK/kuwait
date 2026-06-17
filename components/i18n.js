@@ -5,6 +5,29 @@ import { createContext, useContext, useEffect, useState } from "react";
 // Arabic (MSA) translations keyed by the exact English string.
 // Any key not present falls back to English, so rendering is always safe.
 export const AR = {
+  // --- reworded (capability / program-scale, neutral AI) ---
+  "UDGOK is positioned to deliver the buildings, power, lighting, and mission-critical systems for the program's landmark projects — from design-build to energy, lighting, security, and sourcing.":
+    "UDGOK مهيّأة لتقديم المباني والطاقة والإضاءة والأنظمة الحيوية للمشاريع الكبرى في البرنامج — من التصميم والبناء إلى الطاقة والإضاءة والأمن والتوريد.",
+  " UDGOK is scoped to deliver the facility and systems packages inside it — ": " وUDGOK مهيّأة لتقديم حِزم المرافق والأنظمة داخله — ",
+  "design-build, energy, lighting, security, and sourcing.": "التصميم والبناء، والطاقة، والإضاءة، والأمن، والتوريد.",
+  "UDGOK is positioned to deliver the building, systems, and sourcing packages inside the program's landmark developments. Select a project to see the proposed scope.":
+    "UDGOK مهيّأة لتقديم حِزم المباني والأنظمة والتوريد داخل المشاريع الكبرى للبرنامج. اختر مشروعاً لعرض النطاق المقترح.",
+  "Scoped to the flagship projects.": "مهيّأة للمشاريع الرئيسية.",
+  "in named program value across landmark developments such as the ": "من القيمة المعلنة للبرنامج عبر مشاريع كبرى مثل ",
+  " — among five flagship projects UDGOK is positioned to serve.": " — ضمن خمسة مشاريع رئيسية UDGOK مهيّأة لخدمتها.",
+  "Program scale": "حجم البرنامج",
+  "Named program value": "القيمة المعلنة للبرنامج",
+  "Subject to status": "حسب حالة المشروع",
+  "Built to host": "مصمّمة لاحتضان",
+  "GPU clusters": "عناقيد الرسوميات",
+  "high-density accelerated compute": "حوسبة متسارعة عالية الكثافة",
+  "Wafer-scale AI": "ذكاء اصطناعي بمقياس الرقاقة",
+  "large-model training & inference": "تدريب واستدلال النماذج الكبيرة",
+  "High-density GPU and wafer-scale AI deployments, engineered for the most demanding accelerated-compute density.":
+    "عمليات نشر عالية الكثافة للرسوميات والذكاء الاصطناعي بمقياس الرقاقة، مهندَسة لأعلى كثافات الحوسبة المتسارعة.",
+  "— design & execution for accelerated compute": "— التصميم والتنفيذ للحوسبة المتسارعة",
+  "Accelerated compute halls for GPU & wafer-scale AI": "قاعات حوسبة متسارعة للرسوميات والذكاء الاصطناعي بمقياس الرقاقة",
+
   // nav / chrome
   "Contact": "تواصل معنا",
   "Home": "الرئيسية",

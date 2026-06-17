@@ -33,7 +33,7 @@ const DETAILS = {
   mission: { num: "04", accent: "ember", title: "Mission-Critical Infrastructure",
     lead: "AI, HPC, and mission-critical data center delivery — engineered for accelerated compute, uptime, and resilience.",
     groups: [
-      { label: "AI & data centers", items: ["Accelerated compute halls — NVIDIA & Cerebras", "Server hall design & build", "White-space fit-out & equipment rooms"] },
+      { label: "AI & data centers", items: ["Accelerated compute halls for GPU & wafer-scale AI", "Server hall design & build", "White-space fit-out & equipment rooms"] },
       { label: "Power & cooling", items: ["High-density power & busway", "Direct-to-chip & liquid cooling", "UPS, N+1 redundancy & BMS"] },
     ] },
   security: { num: "05", accent: "ember", title: "Security Systems",
@@ -267,12 +267,12 @@ export default function Landing() {
       <div className="wrap" id="heroContent">
       <span className="eyebrow rise d1">DOC // KWT-01 — REV 2026.1</span>
       <h1 className="rise d2">{t("The systems behind ")}<span className="shimmer">{t("Kuwait\u2019s flagship build.")}</span></h1>
-      <p className="lede rise d3">{t("UDGOK delivers the buildings, power, lighting, and mission-critical systems across the program\u2019s landmark projects \u2014 designed, powered, lit, secured, and sourced.")}</p>
+      <p className="lede rise d3">{t("UDGOK is positioned to deliver the buildings, power, lighting, and mission-critical systems for the program\u2019s landmark projects \u2014 from design-build to energy, lighting, security, and sourcing.")}</p>
       <div className="hero-status rise d3"><LiveClock variant="full" /></div>
       <div className="hero-meta rise d4">
       <div className="hm"><span className="n">6</span><span className="l">{t("Capability pillars")}</span></div>
       <div className="hm"><span className="n">5</span><span className="l">{t("Flagship projects")}</span></div>
-      <div className="hm"><span className="n">$8.5B+</span><span className="l">{t("Named value")}</span></div>
+      <div className="hm"><span className="n">$8.5B+</span><span className="l">{t("Program scale")}</span></div>
       </div>
       </div>
       <div className="scrollcue rise d5"><span className="bar"></span>{t("Scroll")}</div>
@@ -282,7 +282,7 @@ export default function Landing() {
       <span className="glow"></span>
       <div className="wrap reveal">
       <span className="eyebrow" style={{display:"block",marginBottom:"22px"}}>{t("The brief")}</span>
-      <h2><span className="q">{t("Kuwait is building at national scale.")}</span>{t(" UDGOK delivers the facility and systems scope inside it \u2014 ")}<span className="shimmer">{t("designed, powered, lit, secured, and sourced.")}</span></h2>
+      <h2><span className="q">{t("Kuwait is building at national scale.")}</span>{t(" UDGOK is scoped to deliver the facility and systems packages inside it \u2014 ")}<span className="shimmer">{t("design-build, energy, lighting, security, and sourcing.")}</span></h2>
       </div>
       </section>
 
@@ -292,7 +292,7 @@ export default function Landing() {
       <div className="stat-grid reveal" id="statGrid">
       <div className="stat"><div className="num" data-count="6">0</div><div className="lab">{t("Capability pillars")}</div></div>
       <div className="stat"><div className="num" data-count="5">0</div><div className="lab">{t("Flagship projects")}</div></div>
-      <div className="stat"><div className="num"><span className="u">$</span><span data-count="8.5" data-dec="1">0</span><span className="u">B+</span></div><div className="lab">{t("Named project value")}</div></div>
+      <div className="stat"><div className="num"><span className="u">$</span><span data-count="8.5" data-dec="1">0</span><span className="u">B+</span></div><div className="lab">{t("Named program value")}</div></div>
       </div>
       </div>
       </section>
@@ -323,7 +323,7 @@ export default function Landing() {
       <li><b>{t("Decorative")}</b> {t("\u2014 chandeliers, pendants, sconces, feature lighting")}</li>
       <li><b>{t("Controls")}</b> {t("\u2014 dimming and building-management integration")}</li></ul></div>
       <div className="pillar tilt" {...cardProps("mission")}><span className="picon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01"/><path d="M7 16.5h.01"/><path d="M11 7.5h6"/><path d="M11 16.5h6"/></svg></span><span className="pnum">PILLAR 04</span><h3>{t("Mission-Critical Infrastructure")}</h3><ul>
-      <li><b>{t("AI data centers")}</b> {t("\u2014 design & execution (NVIDIA, Cerebras)")}</li>
+      <li><b>{t("AI data centers")}</b> {t("\u2014 design & execution for accelerated compute")}</li>
       <li><b>{t("Resilience")}</b> {t("\u2014 UPS, redundancy, power and cooling")}</li></ul></div>
       <div className="pillar tilt" {...cardProps("security")}><span className="picon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7-7 8.5C8 18 5 15.5 5 11V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span className="pnum">PILLAR 05</span><h3>{t("Security Systems")}</h3><ul>
       <li><b>{t("Access")}</b> {t("\u2014 access control system design and installation")}</li>
@@ -340,12 +340,12 @@ export default function Landing() {
       <div className="wrap">
       <div className="sec-head reveal">
       <span className="eyebrow">{t("Where we fit \u2014 Kuwait program")}</span>
-      <h2>{t("Mapped to the flagship projects.")}</h2>
-      <p>{t("UDGOK delivers the building, systems, and sourcing packages inside the program\u2019s landmark developments. Select a project to see the scope.")}</p>
+      <h2>{t("Scoped to the flagship projects.")}</h2>
+      <p>{t("UDGOK is positioned to deliver the building, systems, and sourcing packages inside the program\u2019s landmark developments. Select a project to see the proposed scope.")}</p>
       </div>
       <div className="scaleband reveal">
       <div className="bignum"><span className="u">$</span>8.5B<span className="u">+</span></div>
-      <div className="slabel">{t("named value across the ")}<b>{t("new airport")}</b>{t(" and ")}<b>{t("Mubarak Al-Kabir port")}</b>{t(" alone \u2014 two of five flagship projects UDGOK is positioned to serve.")}</div>
+      <div className="slabel">{t("in named program value across landmark developments such as the ")}<b>{t("new airport")}</b>{t(" \u2014 among five flagship projects UDGOK is positioned to serve.")}</div>
       </div>
       <div className="prj-list reveal" id="prjList">
       <div className="prj open"><button className="prj-btn" aria-expanded="true"><span className="prj-code">PRJ.01</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><path d="M2 21h20"/><path d="M5 21V8h6v13"/><path d="M11 21v-7h5v7"/><path d="M7 11h2M7 14.5h2"/></svg></span>{t("New housing cities")}</span><span className="prj-val">{t("Multi-site")}</span><span className="prj-ico"><i></i></span></button>
@@ -360,7 +360,7 @@ export default function Landing() {
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">{t("Scope")}</div><div className="prj-scope">
       <span className="chip">{t("Terminal commercial fit-out & tenant improvement")}</span><span className="chip">{t("Architectural, decorative & PoE lighting")}</span><span className="chip">{t("On-site data center & equipment rooms")}</span><span className="chip">{t("Access control & security systems")}</span><span className="chip energy">{t("Backup power & energy storage")}</span><span className="chip energy">{t("EV charging plaza")}</span><span className="chip">{t("Cargo & catering cold storage")}</span><span className="chip">{t("Sourcing")}</span>
       </div></div></div></div>
-      <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.04</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 6.3V20"/><path d="M8.5 9h7"/><path d="M5 12.5a7 7 0 0 0 14 0"/><path d="M5 12.5l-2 .6M5 12.5l1.6 1.8M19 12.5l2 .6M19 12.5l-1.6 1.8"/></svg></span>{t("Mubarak Al-Kabir port")}</span><span className="prj-val has">$4.5B</span><span className="prj-ico"><i></i></span></button>
+      <div className="prj"><button className="prj-btn" aria-expanded="false"><span className="prj-code">PRJ.04</span><span className="prj-name"><span className="prj-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 6.3V20"/><path d="M8.5 9h7"/><path d="M5 12.5a7 7 0 0 0 14 0"/><path d="M5 12.5l-2 .6M5 12.5l1.6 1.8M19 12.5l2 .6M19 12.5l-1.6 1.8"/></svg></span>{t("Mubarak Al-Kabir port")}</span><span className="prj-val">{t("Subject to status")}</span><span className="prj-ico"><i></i></span></button>
       <div className="prj-panel"><div className="prj-panel-inner"><div className="col-l">{t("Scope")}</div><div className="prj-scope">
       <span className="chip">{t("Warehouses, cold storage & industrial buildings")}</span><span className="chip">{t("High-mast, area & flood lighting")}</span><span className="chip">{t("Access control & perimeter security")}</span><span className="chip energy">{t("Power & energy storage")}</span><span className="chip energy">{t("Fleet EV charging")}</span><span className="chip">{t("Materials & equipment sourcing")}</span>
       </div></div></div></div>
@@ -381,13 +381,13 @@ export default function Landing() {
       <p>{t("UDGOK designs and executes AI and high-performance data centers end to end \u2014 white space, high-density power, advanced cooling, and network fabric \u2014 engineered for the most demanding accelerated-compute platforms, and delivered complete with our dedicated partners.")}</p>
       </div>
       <div className="ai-platforms reveal">
-      <span className="ai-pl-label">{t("Designed for")}</span>
-      <span className="ai-chip"><b>NVIDIA</b><em>{t("GPU compute clusters")}</em></span>
-      <span className="ai-chip"><b>Cerebras</b><em>{t("wafer-scale AI systems")}</em></span>
+      <span className="ai-pl-label">{t("Built to host")}</span>
+      <span className="ai-chip"><b>{t("GPU clusters")}</b><em>{t("high-density accelerated compute")}</em></span>
+      <span className="ai-chip"><b>{t("Wafer-scale AI")}</b><em>{t("large-model training & inference")}</em></span>
       <span className="ai-chip alt"><b>{t("Your dedicated stack")}</b><em>{t("built with our partners")}</em></span>
       </div>
       <div className="ai-grid stagger">
-      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/><rect x="10.5" y="10.5" width="3" height="3" rx=".5"/></svg></span><h3>{t("Accelerated compute halls")}</h3><p>{t("High-density GPU and wafer-scale deployments \u2014 DGX / HGX-class clusters and Cerebras CS systems.")}</p></div>
+      <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/><rect x="10.5" y="10.5" width="3" height="3" rx=".5"/></svg></span><h3>{t("Accelerated compute halls")}</h3><p>{t("High-density GPU and wafer-scale AI deployments, engineered for the most demanding accelerated-compute density.")}</p></div>
       <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><h3>{t("High-density power")}</h3><p>{t("Busway distribution, UPS, and N+1 redundancy engineered for AI rack densities.")}</p></div>
       <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><path d="M12 3s5 5.5 5 10a5 5 0 0 1-10 0c0-4.5 5-10 5-10z"/><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5"/></svg></span><h3>{t("Advanced cooling")}</h3><p>{t("Direct-to-chip and liquid cooling, rear-door heat exchangers, and thermal management.")}</p></div>
       <div className="ai-card"><span className="ai-ic"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><path d="M7 11l10-4.6M7 13l10 4.6"/></svg></span><h3>{t("Low-latency fabric")}</h3><p>{t("High-bandwidth network and interconnect design for training and inference at scale.")}</p></div>

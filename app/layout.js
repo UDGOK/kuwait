@@ -4,7 +4,7 @@ import { LanguageProvider } from "../components/i18n";
 export const metadata = {
   title: "UDGOK — Kuwait Infrastructure Program",
   description:
-    "UDGOK delivers the buildings, power, lighting, and mission-critical systems across Kuwait's flagship infrastructure program.",
+    "UDGOK is positioned to deliver the buildings, power, lighting, and mission-critical systems for Kuwait's flagship infrastructure program.",
 };
 
 export const viewport = {
